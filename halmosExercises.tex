@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[mathscr]{euscript}
+\usepackage{faktor}
+\usepackage{mathtools}
+
+\newcommand{\tand}{\text{ and }}
+
+\title{Exercises from Naive Set Theory by Halmos}
+\author{Benjamin Basseri}
+\date{ }
+
+\begin{document}
+
+\maketitle
+
+\setcounter{section}{2}
+\section{Unordered Pairs}
+
+\subsection{} Consider the sets $\varnothing, \{\varnothing\}, \{\{\varnothing\}\}, \{\{\{\varnothing\}\}\}$, etc.; consider the pairs, such as $\{\varnothing, \{\varnothing\}\}$, formed by any two of them; consider the pairs formed by any two such pairs, or else the mixed pairs formed by any singleton and any pair; and proceed so on ad infinitum. Are all the sets obtained in this way distinct from one another?
+
+\textbf{Discussion} Halmos asks if there are two different ways of pairing these sets together that somehow end up constructing the same set. The key fact here is that all sets made this way are unordered pairs so they have the form $\{a, b\}$. The members $a$ and $b$ are themselves pairs or singletons. The axiom of extension requires that there is only one $\{a, b\}$ and anything equal to it must have members $a$ and $b$, and nothing else. So the set $\{a, b\}$ is distinct from any pair with alternative choices of members, which means each set constructed as above is distinct.
+
+\textbf{Proof} Suppose you have a set $E$ that can be constructed from this process by pairing $A$ and $B$ or by pairing $C$ and $D$. Then $E$ is the unordered pair $\{A, B\}$ and at the same time $E = \{C, D\}$, so $\{A, B\} = \{C, D\}$. By the axiom of extension, it must be that these two pairs have the same members and so either $A = C$ and $B = D$ or $A = D$ and $B = C$. Now, $A$ and $B$ are either singletons or pairs, and the same reasoning can be applied to them, `ad infinitum'. So there are not two distinct ways to construct the same set in this manner, and all sets so constructed must be distinct.
+
+\section{Unions and Intersections}
+
+A necessary and sufficient condition that $(A \cap B) \cup C = A \cap (B \cup C)$ is that $C \subset A$. Observe that the condition has nothing to do with the set $B$.
+
+\textbf{Discussion} Recall that `necessary and sufficient' is jargon for an `if and only if' proof, i.e. a biconditional. So we split up the biconditional into the forward and reverse implications.
+
+\textbf{Forward implication}. Assume $(A \cap B) \cup C = A \cap (B \cup C)$. Any $x \in C$ must be in the union $(A \cap B) \cup C$. By assumption this equals $A \cap (B \cup C)$, so $x$ is in this intersection as well. But this requires $x$ to be in each set intersected, so $x \in A$. Therefore $x \in C$ implies $x \in A$ as well: $C \subset A$.
+
+\textbf{Reverse implication}. Assume $C \subset A$ and note that $A \cup C = A$. By the distributive law:
+$$(A \cap B) \cup C = (A \cup C) \cap (B \cup C) = A \cap (B \cup C)$$
+
+\section{Complements and Powers}
+
+\subsection{} Prove that $\mathscr{P}(E) \cap \mathscr{P}(F) = \mathcal{P \cap F}$ and $\mathscr{P}(E) \cup \mathscr{P}(F) = \mathscr{P}(E \cup F)$.
+
+\textbf{Proof}. If $A \in \mathscr{P}(E) \cap \mathscr{P}(F)$ if and only if $A$ is a subset of $E$ and a subset of $F$. This occurs if and only if every member of $A$ is in $E \cap F$, which means $A$ is a subset of $E \cap F$. Hence $A$ must be in $\mathscr{P}(E \cap F)$.
+
+If $A \in \mathscr{P}(E) \cup \mathscr{P}(F)$ then $A$ is a subset of $E$ or $F$. The set $E \cup F$ contains all members of both $E$ and $F$, so $A$ must be a subset of $E \cup F$ as well, and hence a member of $\mathscr{P}(E \cup F)$. 
+
+\subsection{} These assertions can be generalized to 
+$$ \bigcap_{X \in \mathcal{C}} \mathscr{P}(X) = \mathscr{P}\left(\bigcap_{X \in \mathcal{C}} X\right)$$
+$$ \bigcup_{X \in \mathcal{C}} \mathscr{P}(X) \subset \mathscr{P}\left(\bigcup_{X \in \mathcal{C}} X\right);$$
+
+find a reasonable interpretation of the notation in which these generalizations were here expressed and then prove them.
+
+\textbf{Interpretation and proof.} What's remains in the left intersection are the subsets that appear in each $X$'s power set. Since these subsets are in every $X$, they are subsets in $\bigcap X$, the intersection on the right. The left union collects every subset of every $X$ in $\mathcal{C}$. Any such subset of an $X$ is certainly still a subset of $X$ unioned with anything else, since unioning can only add members. Therefore all the subsets making up the left union must also be in the right union.
+
+\subsection{} Show that $E$ is always equal to $\bigcap_{X \in \mathscr{P}(E)}X$ (that is, $E = \bigcup \mathscr{P}(E)$), but that the result of applying $\mathscr{P}$ and $\bigcup$ to $E$ in the other order is a set that includes $E$ as a subset, typically a proper subset.
+
+\textbf{Proof.} Every element in $E$ appears in some subset of $E$, and any element \textit{not} in $E$ will not appear in any such subset. Therefore if we union all the subsets of $E$ together, which is exactly what the notation indicates, we reassemble the set $E$.
+
+To prove $E \subset \mathscr{P}\left(\bigcup E\right)$ consider that $E$ is itself a collection of sets and recall that $\mathscr{P}\left(\bigcup E\right)$ is just alternative notation for $\mathscr{P}\left(\bigcup_{X \in E} X\right)$. Now any set $X$ will be an element of $\mathscr{P}(X)$, so unioning $\mathscr{P}(X)$ for all $X \in E$ places each $X \in E$ in union. Therefore $E$, which is just the collection of the $X$'s, must be a subset of $\mathscr{P}(\bigcup_{X \in E} X)$. 
+
+Let's explore Halmos' comment that $E$ is typically a proper subset of of $\mathscr{P}\left(\bigcup E\right)$. Consider what it would take for $E$ to \textit{not} be a proper subset. Since $E$ must be contained in $\mathscr{P}\left(\bigcup E\right)$, to be improper means $E$ must be all of $\mathscr{P}\left(\bigcup E\right)$. If $E = \mathscr{P}\left(\bigcup E\right)$ then this says that $E$ is the power set of the set made from all $E$'s members' elements. In other words, $E$ must itself have the structure of a power set for this equality to hold. So $E$ is a proper subset of this union unless $E = \mathscr{P}(A)$ for some set $A$.
+
+\section{Unordered Pairs}
+
+\subsection{} If $A, B, X,$ and $Y$ are sets, then
+\begin{enumerate}[i]
+    \item $(A \cup B) \times X = (A \times X) \cup (B \times X)$
+
+    \textbf{Proof} The set $(A \cup B) \times X$ are all possible ordered paris $(c, x)$ with $c \in A \cup B$ and $x \in X$. So equivalently, we could take the set of pairs $A \times X$ which contains all pairs including an $A$ element, and $B \times X$ which has the rest, and union them.
+
+    \item $(A \cap B) \times (X \cap Y) = (A \times X) \cap (B \times Y)$
+    
+    \textbf{Proof.} The set on the left are all pairs with first coordinate in both $A$ and $B$, and second coordinate in both $X$ and $Y$. Then the set on the right starts with $A \times X$ but the intersection operation removes from it any pairs not found in $B \times Y$. What's left are precisely those pairs whose first coordinate is in both $A$ and $B$, and whose second coordinate is in both $X$ and $Y$.
+
+    \begin{align*}
+        (a, x) \in (A \cap B) \times (X \cap Y) &\iff a \in (A \cap B) \tand x \in (X \cap Y)\\
+        &\iff a \in A, a \in B, x \in X, x \in Y\\
+        &\iff (a, x) \in (A \cap X) \tand (a, x) \in (B \cap Y)\\
+        &\iff (a, x) \in (A \cap X) \cap (B \cap Y) 
+    \end{align*}
+
+    \item $(A - B) \times X = (A \times X) - (B \times X)$
+    
+    \textbf{Proof.} The set on the left are all pairs $(a, x)$ with $a \in A, x \in X$ but having removed any pairs where the $A$ coordinate is also a member of $B$, which is precisely what the set on the right specifies.
+
+\section{Relations}
+
+\subsection{} For each of the three possible properties (reflexive, symmetric, transitive) find a relation that does not have that property but does have the other two. 
+
+\textbf{Reflexive} A sibling relation may be thought of as reflexive if we specify that no one is their own sibling. Then if $x$ is a sibling of $y$, $y$ is a sibling of $x$ (symmetric) and if $x$ is a sibling of $y$ and $y$ is a sibling of $z$, then $x$ is a sibling of $z$ (transitive).
+
+\textbf{Symmetric} The $\leq$ relation on real numbers is reflexive since $x \leq x$ always, and it's transitive since $x \leq y$ and $y \leq z$ implies $x \leq z$. But it is not symmetric since if $x \leq y$ it is not required that $y \leq x$. 
+
+\textbf{Transitive} Take movie stars and let the relation be `has been in a movie with'. Everyone has been in a movie with themself (reflexive), and if star $a$ has been in a movie with star $b$ then $b$ has been in that same movie with $a$ (symmetric). But if $a$ and $b$ have made a movie together, and $b$ and $c$, it doesn't mean $a$ and $c$ have been in a movie together (not transitive).
+
+\subsection{} Show that $\faktor{X}{R}$ is indeed a set by exhibiting a condition that specifies exactly the subset $\faktor{X}{R}$ of the power set $\mathscr{P}(X)$
+
+\textbf{Proof.} Each $x \in X$ belongs to equivalence class in $\faktor{X}{R}$ specified as $\{y \in X: xRy\}$. Since the construction is limited to elements of $X$, the class must be a subset of $X$ and therefore a member of $\mathscr{P}(X)$. So $\faktor{X}{R}$, the set of all equivalence classes, is a set and more specifically it's a subset of $\mathscr{P}(X)$.
+\end{enumerate}
+\end{document}

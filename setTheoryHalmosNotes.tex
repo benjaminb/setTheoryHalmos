@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+
+\title{Notes on Naive Set Theory by Halmos}
+\author{Benjamin Basseri}
+\date{ }
+
+\begin{document}
+
+\maketitle
+
+\section{Axiom of Extension}
+
+Sets are equal if and only if they contain exactly the same members.
+
+\section{Axiom of Specification}
+
+\subsection{The Axiom of Specification} Sets can be filtered by logical conditions to determine subsets.
+
+\subsection{Russell's Paradox} There cannot be a `universal' set that contains everything. 
+
+Let $B = \{x \in A: x \not\in x\}$; the elements of $A$ that don't contain themselves. While $B$ is a perfectly valid set, there is no set $A$ that it can belong to.
+
+\textbf{Proof} Assume toward a contradiction that $B \in A$ for some set $A$. We cannot have $B \in B$ since that contradicts the specification for $B$ membership. But if $B \not\in B$ then $B$ qualifies for $B$ membership, which means it \textit{is} in $B$. Since this is a contradiction, there cannot be a set $A$ that has $B$ as a member.
+
+\section{Unordered Pairs}
+
+\subsection{The Empty Set} The empty set $\varnothing$ has no members. It's considered a subset of every set since, for any set $A$, $\varnothing$ has no members that are not in $A$.
+
+\subsection{The Axiom of Pairing} For any two sets there is a set they both belong to. 
+
+\subsection{Unordered Pairs} We can use specification to make an unordered pair $\{a, b\}$ out of any distinct $a$ and $b$, a set that contains them and nothing else. 
+
+\subsection{Specifying sets with only a proposition} There are some special sets that can be specified by only a proposition $S(x)$, such as $\{x: x \neq x\} = \varnothing$ or $\{x: x = a\} = \{a\}$. But in general, the axiom of specification requires a proposition $S(x)$ be joined with a set $A$ as in $\{x \in A: S(x)\}$.
+
+\section{Unions and Intersections}
+
+\subsection{Axiom of unions} A set can be formed from the members of each set in a collection of sets.
+
+\subsection{Union and Intersection are associative and commutative} Unions and intersections can be thought of as specific logical propositions involving \textit{or} and \textit{and}. Since logical \textit{or} and logical \textit{and} are associative and commutative in Boolean algebra, unions and intersections are as well.
+
+\subsection{Intersections with the empty set} For a collection of sets $\mathcal{C}$ define 
+$$\bigcup \mathcal{C} = \{x: x \in X \text{ and } X \in \mathcal{C}\}$$
+
+If $\mathcal{C}$ is empty, then no $x$ can satisfy the specification and the intersection is empty. Halmos makes a technical point about requiring $\mathcal{C}$ to be non-empty. But this is an artifact of the way he phrased intersecting a collection, in order to avoid $x$'s vacuously satisfying the intersection condition. This is not needed if the specification above is used.
+
+\section{Complements and Powers}
+
+\subsection{Complements} The set difference $A - B$ are the elements of $A$ that are not also in $B$. This is the \textit{relative complement} of $B$ in $A$. We can write this as $B'$ when the set $A$ is clear from context.
+
+\subsection{Axiom of powers} For each set $A$ there is a set $\mathcal{P}(A)$ whose members are all possible subsets of $A$. 
+
+\section{Ordered Pairs}
+
+\subsection{Ordered Pairs from Sets} To encode an ordering of elements, make a collection where each element to be ordered is replaced by a set containing that element and all its predecessors.
+$$X = \{a, b, c\}, \text{ order desired: } (c, b, a)$$
+$$(c, b, a) \longmapsto \{\{c\}, \{c, b\}, \{c, b, a\}\}$$
+
+\subsection{Equality of Ordered Pairs} With ordered pairs if $(a, b) = (x, y)$ then each coordinate must be equal: $a = x, b = y$. By the encoding above, each ordered pair has exactly one singleton and one unordered pair, so there is no ambiguity which is which.
+
+\section{Relations}
+
+\subsection{Binary relations} Using sets, we can encode relations as ordered pairs: $(x, y)$. A set of ordered pairs can then collect all the elements $x, y$ such that $x$ has the given relation to $y$.
+
+
+\end{document}
