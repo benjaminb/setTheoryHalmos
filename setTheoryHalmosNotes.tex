@@ -2,7 +2,8 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-
+\usepackage{faktor}
+\usepackage[mathscr]{euscript}
 
 \title{Notes on Naive Set Theory by Halmos}
 \author{Benjamin Basseri}
@@ -63,7 +64,23 @@ $$(c, b, a) \longmapsto \{\{c\}, \{c, b\}, \{c, b, a\}\}$$
 
 \section{Relations}
 
-\subsection{Binary relations} Using sets, we can encode relations as ordered pairs: $(x, y)$. A set of ordered pairs can then collect all the elements $x, y$ such that $x$ has the given relation to $y$.
+Using sets, we can encode relations as ordered pairs: $(x, y)$. A set of ordered pairs can then collect all the elements $x, y$ such that $x$ has the given relation to $y$.
+
+\section{Functions}
+
+\subsection{Defining functions} 
+
+On $X \times Y$, a function pairs every element of $X$ with exactly one element of $Y$. Compare to a relation, which does not require every $x \in X$ to be in a pair, and doesn't require a unique $y$ to be paired with any $x$.
+
+\subsection{The Canonical Map} The canonical map is the function that maps $x \in X$ to its equivalence class in $\faktor{X}{R}$.
+
+\subsection{Characteristic Function} For $A \subset X$, the characteristic function $\chi_A(x)$ = 1 if $x \in A$ and 0 if $x \in X - A$. Note that $A$ is a subset of $X$, so $A \in \mathscr{P}(X)$, but $\chi_A$ is a function, so it is a member of $2^X$. However, we can naturally associate a subset to its characteristic function with the correspondence $A \longrightarrow \chi_A$.
+
+\section{Families}
+
+\subsection{Index sets and families} It may be convenient to give certain elements of $X$ a label such as $x_i$ or $x_\alpha$. To do so we establish a function $I \longrightarrow X$ from the \textit{index set} $I$ (the set of labels) to $X$. Like any function this pairs an $i \in I$ with a specific $x \in X$. Thinking of $X$ being \textit{indexed} by $I$, we call this function the \textit{family} $\{x_i\}$.
+
+\subsection{Unioning a family} For a family $\{A_i\}$, the notation $\bigcup_{i \in I} A_i$ or $\bigcup_i A_i$ indicates the union of the range of the family
 
 
 \end{document}

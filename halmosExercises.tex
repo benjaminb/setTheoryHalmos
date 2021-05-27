@@ -39,9 +39,9 @@ $$(A \cap B) \cup C = (A \cup C) \cap (B \cup C) = A \cap (B \cup C)$$
 
 \section{Complements and Powers}
 
-\subsection{} Prove that $\mathscr{P}(E) \cap \mathscr{P}(F) = \mathcal{P \cap F}$ and $\mathscr{P}(E) \cup \mathscr{P}(F) = \mathscr{P}(E \cup F)$.
+\subsection{} Prove that $\mathscr{P}(E) \cap \mathscr{P}(F) = \mathscr{P}(E \cap F)$ and $\mathscr{P}(E) \cup \mathscr{P}(F) = \mathscr{P}(E \cup F)$.
 
-\textbf{Proof}. If $A \in \mathscr{P}(E) \cap \mathscr{P}(F)$ if and only if $A$ is a subset of $E$ and a subset of $F$. This occurs if and only if every member of $A$ is in $E \cap F$, which means $A$ is a subset of $E \cap F$. Hence $A$ must be in $\mathscr{P}(E \cap F)$.
+\textbf{Proof}. $A \in \mathscr{P}(E) \cap \mathscr{P}(F)$ if and only if $A$ is a subset of $E$ and a subset of $F$. This occurs if and only if every member of $A$ is in $E \cap F$, which means $A$ is a subset of $E \cap F$. Hence $A$ must be in $\mathscr{P}(E \cap F)$.
 
 If $A \in \mathscr{P}(E) \cup \mathscr{P}(F)$ then $A$ is a subset of $E$ or $F$. The set $E \cup F$ contains all members of both $E$ and $F$, so $A$ must be a subset of $E \cup F$ as well, and hence a member of $\mathscr{P}(E \cup F)$. 
 
@@ -79,11 +79,12 @@ Let's explore Halmos' comment that $E$ is typically a proper subset of of $\math
         &\iff (a, x) \in (A \cap X) \tand (a, x) \in (B \cap Y)\\
         &\iff (a, x) \in (A \cap X) \cap (B \cap Y) 
     \end{align*}
-
+    
     \item $(A - B) \times X = (A \times X) - (B \times X)$
     
     \textbf{Proof.} The set on the left are all pairs $(a, x)$ with $a \in A, x \in X$ but having removed any pairs where the $A$ coordinate is also a member of $B$, which is precisely what the set on the right specifies.
-
+\end{enumerate}
+    
 \section{Relations}
 
 \subsection{} For each of the three possible properties (reflexive, symmetric, transitive) find a relation that does not have that property but does have the other two. 
@@ -97,5 +98,65 @@ Let's explore Halmos' comment that $E$ is typically a proper subset of of $\math
 \subsection{} Show that $\faktor{X}{R}$ is indeed a set by exhibiting a condition that specifies exactly the subset $\faktor{X}{R}$ of the power set $\mathscr{P}(X)$
 
 \textbf{Proof.} Each $x \in X$ belongs to equivalence class in $\faktor{X}{R}$ specified as $\{y \in X: xRy\}$. Since the construction is limited to elements of $X$, the class must be a subset of $X$ and therefore a member of $\mathscr{P}(X)$. So $\faktor{X}{R}$, the set of all equivalence classes, is a set and more specifically it's a subset of $\mathscr{P}(X)$.
+
+\section{Functions}
+
+\subsection{} In what special cases are projection maps one-to-one?
+
+\textbf{Solution.} Suppose $f: X \times Y \longrightarrow X$ is a projection onto $X$. For $f$ to be injective (one-to-one) then for any $x \in X$ that $f$ maps to, it must map to $x$ only once. This cannot happen if there is more than one $y \in Y$, since if there were two distinct $y, y' \in Y$, then $f(x, y) = x$ and $f(x, y') = x$ as well, mapping to $x$ twice. So $f$ can only be injective if $Y$ is a singleton. If $Y$ is empty, then $X \times Y$ is empty as well as the projection $f$, which makes it vacuously injective.
+
+\subsection{}
+\begin{enumerate}[i]
+    \item $Y^\varnothing$ has exactly one element, namely $\varnothing$, whether $Y$ is empty or not.
+    
+    \textbf{Proof.} $Y^\varnothing$ is the set of all possible functions from the empty set to $Y$. Any such function is a subset of $\varnothing \times Y$, which is empty, so the set of possible functions $Y^\varnothing$ is empty as well. 
+
+    \item if $X$ is not empty, then $\varnothing^X$ is empty.
+
+    \textbf{Proof.} $\varnothing^X$ is the set of all possible functions from $X$ to the empty set, and must be a subset of $X \times \varnothing$, which is empty.
+
+\section{Families}
+
+\subsection{} Formulate and prove a generalized version of the commutative law for unions.
+
+\textbf{Proof} Consider unioning some number of sets: $A \cup B \cup \ldots \cup X$. The commutative law states that the order in which we place the sets doesn't change the result of the union. By the axiom of specification, the only condition for an element to be in the union is that it appears in at least one of the sets being unioned: first set, last set, or any other. Hence, order doesn't matter for set unions.
+
+\subsection{} If both $\{A_i\}$ and $\{B_i\}$ are families of sets, then
+$$\left(\bigcup_i A_i\right) \cap \left(\bigcup_j B_j\right) = \bigcup_{i, j} \ (A_i \cap B_j),$$
+$$\left(\bigcap_i A_i \right) \cup \left(\bigcap_j B_j\right) = \bigcap_{i, j}\  (A_i \cup B_j)$$
+
+\textbf{Discussion.} Suppose $c \in \Big(\bigcup_i A_i\Big) \cap \left(\bigcup_j B_j\right)$. Then there is some $i$ where $A_i$ contains $c$ and there is some $j$ where $B_j$ contains $c$. This means $c \in A_i \cap B_j$, which means $c \in \bigcup_{i, j} A_i \cap B_j$. 
+
+For the second equality, the left hand side specifies elements that are in every $A_i$ or in every $B_j$. So for an element $c$ to \textit{not} be in this set, there would have to be an $A_i$ and a $B_j$ that didn't contain it. For that $(i, j)$ pair, $c \not\in (A_i \cup B_j)$ and will be cut out of the intersection $\bigcap_{i, j} \ (A_i \cup B_j)$. So the right side contains the same elements as the left side, and no more.
+
+\subsection{} Prove that $\Big(\bigcup_i A_i \Big) \times \Big( \bigcup_j B_j \Big) = \bigcup_{i,j}\left(A_i \times B_j\right)$, and that the same equation holds for intersections (provided that the domains of the families involved are not emtpy).
+
+\textbf{Proof.} An $(a, b)$ is in the product on the left if and only if there is an $i$ and $j$ where $a \in A_i$ and $b \in B_j$ which means $(a, b) \in A_i \times B_j$. This $(i, j)$ pair is one of the indices in $\bigcup_{i,j}$ so $A_i \times B_j$ will be in the union on the right.
+
+\subsection{} Prove (with appropriate provisos about empty families) that $\bigcap_i X_i \subset X_j \subset \bigcap_i X_i$ for each index $j$ and that intersection and union can in fact be characterized as the extreme solutions of these inclusions.
+
+\textbf{Proof.} Intersecting a set can only remove elements from the result and unioning sets can only add elements to the result. So anything in $\bigcap_i X_i $ must be in $X_j$ and anything in $X_j$ must be in $\bigcap_i X_i$.
+
+\section{Inverses and Composites}
+
+\subsection{} If $\{A_i\}$ is a family of subsets of $X$, then $f\left(\bigcup_i A_i\right) = \bigcup_i f(A_i)$.
+
+\textbf{Discussion.} Suppose $f$ maps $X$ to some set $Y$. Then the notation $f(A_i)$ refers to the subset of $Y$ that is mapped to any element in $A_i$. So $y \in f\left(\bigcup_i A_i\right)$ if and only if there is an $A_i \in \{A_i\}$ with a member $a$ that maps to $y$ on $f$. This $y$ will then also be in the set $\bigcup_i f(A_i)$, since this is unioning the image of alll $A_i$'s. Likewise, if an $A_i$ contains an $a \stackrel{f}{\longmapsto} y$ then $a \in \bigcup_i A_i$ and $y \in f\left(\bigcup_i A_i \right)$. 
+
+\subsection{} A necessary and sufficient condition that $f$ map $X$ onto $Y$ is that the inverse image under $f$ of each non-empty subset of $Y$ be a non-empty subset of $X$.
+
+\textbf{Discussion.} If $f$ is surjective then by definition, any $y \in Y$ has at least one $x \in X$ such that $f(x) = y$. Then if $B$ is any non-empty subset of $Y$, $B$ has $y$-elements in it, and there are $x$-elements that map to them. So the inverse image $f^{-1}(B)$ is non-empty.
+
+\subsection{} Relation composition is always associative. 
+
+\textbf{Proof} Suppose we have the relation $U = T \circ S \circ R$ between sets $A, B, C, D$:
+$$A \stackrel{R}{\longrightarrow} B \stackrel{S}{\longrightarrow} C \stackrel{T}{\longrightarrow}D$$
+
+We say $a \in A$ has the relation $U$ to $d \in D$ when there's a $b \in B$ and a $c \in C$ where $aRb, bSc$, and $cTd$. If one of those relations is missing then we don't have $aUd$. The quesion is only about what pairs exist in each relation set $R, S, T$: we may phrase the question as $T \circ (S \circ R)$ or $(T \circ S) \circ R$ or $T \circ S \circ R$ but the choice won't affect the membership of $R, S$, or $T$. Hence we could evaluate in any grouping and get the same outcome, and relation composition is associative.
+
+\subsection{} Relation composition is always connected with inversion via the equation $(SR)^{-1} = R^{-1}S^{-1}$
+
+Suppose $xRy$ and $ySz$. Then by definition the inverse relations $yR^{-1}x$ and $zS^{-1}y$ hold. Since we have $zS^{-1}y$ and $yR^{-1}x$ they compose as $z S^{-1}R^{-1} x$. 
 \end{enumerate}
+
 \end{document}
