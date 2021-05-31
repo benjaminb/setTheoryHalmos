@@ -64,7 +64,7 @@ Let's explore Halmos' comment that $E$ is typically a proper subset of of $\math
 \section{Unordered Pairs}
 
 \subsection{} If $A, B, X,$ and $Y$ are sets, then
-\begin{enumerate}[i]
+\begin{enumerate}[(i)]
     \item $(A \cup B) \times X = (A \times X) \cup (B \times X)$
 
     \textbf{Proof} The set $(A \cup B) \times X$ are all possible ordered paris $(c, x)$ with $c \in A \cup B$ and $x \in X$. So equivalently, we could take the set of pairs $A \times X$ which contains all pairs including an $A$ element, and $B \times X$ which has the rest, and union them.
@@ -99,6 +99,18 @@ Let's explore Halmos' comment that $E$ is typically a proper subset of of $\math
 
 \textbf{Proof.} Each $x \in X$ belongs to equivalence class in $\faktor{X}{R}$ specified as $\{y \in X: xRy\}$. Since the construction is limited to elements of $X$, the class must be a subset of $X$ and therefore a member of $\mathscr{P}(X)$. So $\faktor{X}{R}$, the set of all equivalence classes, is a set and more specifically it's a subset of $\mathscr{P}(X)$.
 
+
+\subsection{} Relation composition is always associative. 
+
+\textbf{Proof} Suppose we have the relation $U = T \circ S \circ R$ between sets $A, B, C, D$:
+$$A \stackrel{R}{\longrightarrow} B \stackrel{S}{\longrightarrow} C \stackrel{T}{\longrightarrow}D$$
+
+We say $a \in A$ has the relation $U$ to $d \in D$ when there's a $b \in B$ and a $c \in C$ where $aRb, bSc$, and $cTd$. If one of those relations is missing then we don't have $aUd$. The quesion is only about what pairs exist in each relation set $R, S, T$: we may phrase the question as $T \circ (S \circ R)$ or $(T \circ S) \circ R$ or $T \circ S \circ R$ but the choice won't affect the membership of $R, S$, or $T$. Hence we could evaluate in any grouping and get the same outcome, and relation composition is associative.
+
+\subsection{} Relation composition is always connected with inversion via the equation $(SR)^{-1} = R^{-1}S^{-1}$
+
+\textbf{Proof.} Suppose $xRy$ and $ySz$. Then by definition, the inverse relations $yR^{-1}x$ and $zS^{-1}y$ hold. Since we have $zS^{-1}y$ and $yR^{-1}x$ they compose as $z S^{-1}R^{-1} x$. 
+
 \section{Functions}
 
 \subsection{} In what special cases are projection maps one-to-one?
@@ -106,7 +118,7 @@ Let's explore Halmos' comment that $E$ is typically a proper subset of of $\math
 \textbf{Solution.} Suppose $f: X \times Y \longrightarrow X$ is a projection onto $X$. For $f$ to be injective (one-to-one) then for any $x \in X$ that $f$ maps to, it must map to $x$ only once. This cannot happen if there is more than one $y \in Y$, since if there were two distinct $y, y' \in Y$, then $f(x, y) = x$ and $f(x, y') = x$ as well, mapping to $x$ twice. So $f$ can only be injective if $Y$ is a singleton. If $Y$ is empty, then $X \times Y$ is empty as well as the projection $f$, which makes it vacuously injective.
 
 \subsection{}
-\begin{enumerate}[i]
+\begin{enumerate}[(i)]
     \item $Y^\varnothing$ has exactly one element, namely $\varnothing$, whether $Y$ is empty or not.
     
     \textbf{Proof.} $Y^\varnothing$ is the set of all possible functions from the empty set to $Y$. Any such function is a subset of $\varnothing \times Y$, which is empty, so the set of possible functions $Y^\varnothing$ is empty as well. 
@@ -114,6 +126,8 @@ Let's explore Halmos' comment that $E$ is typically a proper subset of of $\math
     \item if $X$ is not empty, then $\varnothing^X$ is empty.
 
     \textbf{Proof.} $\varnothing^X$ is the set of all possible functions from $X$ to the empty set, and must be a subset of $X \times \varnothing$, which is empty.
+\end{enumerate}
+
 
 \section{Families}
 
@@ -147,16 +161,32 @@ For the second equality, the left hand side specifies elements that are in every
 
 \textbf{Discussion.} If $f$ is surjective then by definition, any $y \in Y$ has at least one $x \in X$ such that $f(x) = y$. Then if $B$ is any non-empty subset of $Y$, $B$ has $y$-elements in it, and there are $x$-elements that map to them. So the inverse image $f^{-1}(B)$ is non-empty.
 
-\subsection{} Relation composition is always associative. 
+\subsection{} Assume in each case that $f$ is a function from $X$ to $Y$.
 
-\textbf{Proof} Suppose we have the relation $U = T \circ S \circ R$ between sets $A, B, C, D$:
-$$A \stackrel{R}{\longrightarrow} B \stackrel{S}{\longrightarrow} C \stackrel{T}{\longrightarrow}D$$
+\begin{enumerate}[(i)]
+    \item If $g$ is a function from $Y$ to $X$ such that $gf$ is the identity on $X$, then $f$ is one-to-one and $g$ maps $Y$ onto $X$.
 
-We say $a \in A$ has the relation $U$ to $d \in D$ when there's a $b \in B$ and a $c \in C$ where $aRb, bSc$, and $cTd$. If one of those relations is missing then we don't have $aUd$. The quesion is only about what pairs exist in each relation set $R, S, T$: we may phrase the question as $T \circ (S \circ R)$ or $(T \circ S) \circ R$ or $T \circ S \circ R$ but the choice won't affect the membership of $R, S$, or $T$. Hence we could evaluate in any grouping and get the same outcome, and relation composition is associative.
+    \textbf{Proof.} If $f$ wasn't injective there'd be two distinct elements $x, x' \in X$ that $f$ maps to the same $y$. Now $g(y)$ must map back to the original element in $X$ so that $gf$ is the identity map, but if $g(y) = x$ then $gf$ is not the identity for $x'$ and if $g(y) = x'$ then $gf$ isn't the identity on $x$. So $f$ must be injective. Since $gf$ must be the identity on $X$, every $x \in X$ must have a $y \in Y$ such that $g(y) = x$, which means $g$ must be surjective.
 
-\subsection{} Relation composition is always connected with inversion via the equation $(SR)^{-1} = R^{-1}S^{-1}$
+    \item A necessary and sufficient condition that $f(A \cap B) = f(A) \cap f(B)$ for all subsets $A$ and $B$ of $X$ is that $f$ be one-to-one.
+    
+    \textbf{Forward implication:} If $f(A \cap B) = f(A) \cap f(B)$ for \textit{all} $A, B \subset X$ then it must hold when $A$ and $B$ are distinct singletons. Then this equality requires $f(A) \cap f(B) = f(\varnothing) = \varnothing$, which means $f$ must map each $x \in X$ to a distinct $y \in Y$, so that $f$ is injective. 
 
-Suppose $xRy$ and $ySz$. Then by definition the inverse relations $yR^{-1}x$ and $zS^{-1}y$ hold. Since we have $zS^{-1}y$ and $yR^{-1}x$ they compose as $z S^{-1}R^{-1} x$. 
+    \textbf{Reverse implication:} For each $y \in f(A) \cap f(B)$ there is an $x \in X$ such that $f(x) = y$ Since $f$ is injective, there is only one such $x$, which must be in both $A$ and $B$. Hence, $x \in A\cap B$ and $f(x) \in f(A \cap B)$, which shows that $f(A) \cap f(B) \subset f(A \cap B)$. Reversing these steps shows $f(A \cap B) \subset f(A) \cap f(B)$, which shows equality. 
+
+    \item A necessary and sufficient condition that $f(X - A) \subset Y - f(A)$ for all subsets $A$ of $X$ is that $f$ be one-to-one.
+
+    \textbf{Forward implication:} Assume toward a contradiction that $f$ isn't injective. Then there is an $f(x) = f(x') = y$ for distinct $x, x' \in X$. Now let $A$ be a subset that contains $x'$ but not $x$. Then $x \in X - A$ so $y \in f(X - A)$. However, since $x' \in A$ then $y \in f(A)$, which means $y$ is removed from $Y - f(A)$. Then $f(X - A)$ has $y$ but $Y - f(A)$ does not, which contradicts $f(X - A) \subset Y - f(A)$
+
+    \textbf{Reverse implication:} If $f$ is injective then the elements removed from $X$ in $X - A$ are the only ones that can map to $f(A)$, therefore $f(A)$ is certainly removed from the image $f(X - A)$. Then, since $f(X)$ must be contained in $Y$, we have $f(X - A) \subset Y - f(A)$.
+
+    \item A necessary and sufficient condition that $Y - f(A) \subset f(X - A)$ for all subsets $A$ of $X$ is that $f$ map $X$ onto $Y$.
+    
+    \textbf{Proof.} Since this must hold for $A$ being any subset of $X$, consider what happens when $A = \varnothing$. Then $Y - f(A) \subset f(X - A)$ means $Y \subset f(X)$. For $f(X)$ to contain $Y$ it must be all of $Y$ itself, meaning $f$ is surjective.
+
+
 \end{enumerate}
+
+
 
 \end{document}
