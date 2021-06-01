@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{faktor}
 \usepackage[mathscr]{euscript}
+\newcommand{\pow}[1]{\mathscr{P}(#1)}
 
 \title{Notes on Naive Set Theory by Halmos}
 \author{Benjamin Basseri}
@@ -74,7 +75,7 @@ On $X \times Y$, a function pairs every element of $X$ with exactly one element 
 
 \subsection{The Canonical Map} The canonical map is the function that maps $x \in X$ to its equivalence class in $\faktor{X}{R}$.
 
-\subsection{Characteristic Function} For $A \subset X$, the characteristic function $\chi_A(x)$ = 1 if $x \in A$ and 0 if $x \in X - A$. Note that $A$ is a subset of $X$, so $A \in \mathscr{P}(X)$, but $\chi_A$ is a function, so it is a member of $2^X$. However, we can naturally associate a subset to its characteristic function with the correspondence $A \longrightarrow \chi_A$.
+\subsection{Characteristic Function} For $A \subset X$, the characteristic function $\chi_A(x)$ = 1 if $x \in A$ and 0 if $x \in X - A$. Note that $A$ is a subset of $X$, so $A \in \pow{X}$, but $\chi_A$ is a function, so it is a member of $2^X$. However, we can naturally associate a subset to its characteristic function with the correspondence $A \longrightarrow \chi_A$.
 
 \section{Families}
 
@@ -82,5 +83,19 @@ On $X \times Y$, a function pairs every element of $X$ with exactly one element 
 
 \subsection{Unioning a family} For a family $\{A_i\}$, the notation $\bigcup_{i \in I} A_i$ or $\bigcup_i A_i$ indicates the union of the range of the family
 
+
+\section{Inverses and Composites}
+
+\subsection{Image subset maps}
+
+For a function $f: X \longrightarrow Y$, and $A \subset X$, we let $f(A)$ denote the set of $Y$ elements mapped to by some element in $A$. Technically, this is a function on $\pow{X}$ to $\mathscr{P}(Y)$ and we \textit{overload} the meaning of $f$. 
+
+\subsection{Inverse maps}
+
+Let $f^{-1}(B)$, where $B \subset Y$, denote the elements in $X$ that map into $B$. Rather than implying that $f$ is invertible, this says the inverse map generally is from $\pow{Y}$ to $\pow{X}$. If $f$ is injective then $f^{-1}$ will map singletons to singletons, and we might call the function $f$ invertible.
+
+\subsection{Relation inverses}
+
+Inverse relations can be phrased as such: if $x$ has some relation $R$ to $y$, then $y$ has the relation $R^{-1} $ to $x$.
 
 \end{document}
