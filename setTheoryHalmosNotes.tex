@@ -16,7 +16,16 @@
 
 \section{Axiom of Extension}
 
-Sets are equal if and only if they contain exactly the same members.
+\subsection{Sets} Sets, which will not be formally defined, are collections of objects. This text is more concerned with what we can \emph{do} with sets rather than what sets \emph{are}.
+
+\subsection{The Axiom of Extension}
+Sets are equal if and only if they contain exactly the same members. This means we consider two sets to be identical when they have the same elements: the members of the set define the set.
+
+\subsection{Inclusion both ways}
+One technique to prove sets $A$ and $B$ are equal is to prove that $A \subset B$ and $B \subset A$. If both inclusions hold it means that every element of $A$ is also in $B$ but every element of $B$ is also in $A$. Then $A$ and $B$ have all the same members, and $A = B$ by extension.
+
+\subsection{The belonging relation} 
+Objects can `belong' to sets, e.g. $x \in A$. So `belonging' is a relationship between $x$ and $A$. Halmos notes that the Axiom of Extension not only defines equality for sets, but it puts conditions on the `belonging' relation as well. For instance, belonging is not symmetric: if $x \in A$ it does not mean that $A \in x$.
 
 \section{Axiom of Specification}
 
@@ -34,20 +43,22 @@ Let $B = \{x \in A: x \not\in x\}$; the elements of $A$ that don't contain thems
 
 \subsection{The Axiom of Pairing} For any two sets there is a set they both belong to. 
 
-\subsection{Unordered Pairs} We can use specification to make an unordered pair $\{a, b\}$ out of any distinct $a$ and $b$, a set that contains them and nothing else. 
+\subsection{Unordered Pairs} We can use specification to make an unordered pair $\{a, b\}$ out of any distinct $a$ and $b$: a set that contains them and nothing else. 
 
 \subsection{Specifying sets with only a proposition} There are some special sets that can be specified by only a proposition $S(x)$, such as $\{x: x \neq x\} = \varnothing$ or $\{x: x = a\} = \{a\}$. But in general, the axiom of specification requires a proposition $S(x)$ be joined with a set $A$ as in $\{x \in A: S(x)\}$.
 
 \section{Unions and Intersections}
 
-\subsection{Axiom of unions} A set can be formed from the members of each set in a collection of sets.
+\subsection{Axiom of unions} A set can be formed by collecting the members of multiple sets. 
 
 \subsection{Union and Intersection are associative and commutative} Unions and intersections can be thought of as specific logical propositions involving \textit{or} and \textit{and}. Since logical \textit{or} and logical \textit{and} are associative and commutative in Boolean algebra, unions and intersections are as well.
 
 \subsection{Intersections with the empty set} For a collection of sets $\mathcal{C}$ define 
 $$\bigcup \mathcal{C} = \{x: x \in X \text{ and } X \in \mathcal{C}\}$$
 
-If $\mathcal{C}$ is empty, then no $x$ can satisfy the specification and the intersection is empty. Halmos makes a technical point about requiring $\mathcal{C}$ to be non-empty. But this is an artifact of the way he phrased intersecting a collection, in order to avoid $x$'s vacuously satisfying the intersection condition. This is not needed if the specification above is used.
+If $\mathcal{C}$ is empty, then no $x$ can satisfy the specification and the union is empty. 
+
+Halmos makes a technical point about requiring $\mathcal{C}$ to be non-empty if we consider $\bigcap \mathcal{C}$. But this is an artifact of the way he phrased intersecting a collection, in order to avoid $x$'s vacuously satisfying the intersection condition. We can simply define the intersection of the empty set with anything to be the empty set.
 
 \section{Complements and Powers}
 
@@ -75,7 +86,10 @@ On $X \times Y$, a function pairs every element of $X$ with exactly one element 
 
 \subsection{The Canonical Map} The canonical map is the function that maps $x \in X$ to its equivalence class in $\faktor{X}{R}$.
 
-\subsection{Characteristic Function} For $A \subset X$, the characteristic function $\chi_A(x)$ = 1 if $x \in A$ and 0 if $x \in X - A$. Note that $A$ is a subset of $X$, so $A \in \pow{X}$, but $\chi_A$ is a function, so it is a member of $2^X$. However, we can naturally associate a subset to its characteristic function with the correspondence $A \longrightarrow \chi_A$.
+\subsection{Encoding $\mathbb{N}$ with sets.} We can encode the natural numbers with nothing but the ordered set enoding:
+$$0 = \varnothing, 1 = \{\varnothing\}, 2 = \{0, 1\}, \ldots$$
+
+\subsection{Characteristic Function} For $A \subset X$, the characteristic function $\chi_A(x)$ = 1 if $x \in A$ and 0 otherwise. Note that $A$ is a subset of $X$, so $A \in \pow{X}$, but $\chi_A$ is a function, so it is a member of $2^X$. However, we can naturally associate a subset to its characteristic function with the correspondence $A \longrightarrow \chi_A$.
 
 \section{Families}
 

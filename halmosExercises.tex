@@ -106,7 +106,7 @@ $$A \stackrel{R}{\longrightarrow} B \stackrel{S}{\longrightarrow} C \stackrel{T}
 
 We say $a \in A$ has the relation $U$ to $d \in D$ when there's a $b \in B$ and a $c \in C$ where $aRb, bSc$, and $cTd$. If one of those relations is missing then we don't have $aUd$. The quesion is only about what pairs exist in each relation set $R, S, T$: we may phrase the question as $T \circ (S \circ R)$ or $(T \circ S) \circ R$ or $T \circ S \circ R$ but the choice won't affect the membership of $R, S$, or $T$. Hence we could evaluate in any grouping and get the same outcome, and relation composition is associative.
 
-\subsection{} Relation composition is always connected with inversion via the equation $(SR)^{-1} = R^{-1}S^{-1}$
+% \subsection{} Relation composition is always connected with inversion via the equation $(SR)^{-1} = R^{-1}S^{-1}$
 
 \textbf{Proof.} Suppose $xRy$ and $ySz$. Then by definition, the inverse relations $yR^{-1}x$ and $zS^{-1}y$ hold. Since we have $zS^{-1}y$ and $yR^{-1}x$ they compose as $z S^{-1}R^{-1} x$. 
 
@@ -183,9 +183,18 @@ For the second equality, the left hand side specifies elements that are in every
     
     \textbf{Proof.} Since this must hold for $A$ being any subset of $X$, consider what happens when $A = \varnothing$. Then $Y - f(A) \subset f(X - A)$ means $Y \subset f(X)$. For $f(X)$ to contain $Y$ it must be all of $Y$ itself, meaning $f$ is surjective.
 
+    \item Consider the matrix $T =
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33}
+    \end{bmatrix}$ and the vector $\mathbf{v} = \begin{bmatrix}x \\ y \\ z\end{bmatrix}$. Show that
+    $$T\mathbf{v} = T(x\mathbf{e}_1 + y\mathbf{e}_2 + z\mathbf{e}_3) $$
 
+    Use matrix multiplication to evaluate the product on the left and the distributive property on the right
+    
+    Injective: $\forall y \in \text{img }f,  \exists! x \in X: f(x) = y$
+
+    Surjective: $\forall y \in Y, \exists x \in X: f(x) = y $
 \end{enumerate}
-
-
-
 \end{document}
