@@ -38,7 +38,7 @@ $$(A \cap B) \cup C = (A \cup C) \cap (B \cup C) = A \cap (B \cup C)$$
 
 \section{Complements and Powers}
 
-\subsection{} Prove that $\mathscr{P}(E) \cap \mathscr{P}(F) = \mathscr{P}(E \cap F)$ and $\mathscr{P}(E) \cup \mathscr{P}(F) = \mathscr{P}(E \cup F)$.
+\subsection{} Prove that $\mathscr{P}(E) \cap \mathscr{P}(F) = \mathscr{P}(E \cap F)$ and $\mathscr{P}(E) \cup \mathscr{P}(F) \subset \mathscr{P}(E \cup F)$.
 
 \textbf{Proof}. $A \in \mathscr{P}(E) \cap \mathscr{P}(F)$ if and only if $A$ is a subset of $E$ and a subset of $F$. This occurs if and only if every member of $A$ is in $E \cap F$, which means $A$ is a subset of $E \cap F$. Hence $A$ must be in $\mathscr{P}(E \cap F)$.
 
@@ -50,15 +50,15 @@ $$ \bigcup_{X \in \mathcal{C}} \mathscr{P}(X) \subset \mathscr{P}\left(\bigcup_{
 
 find a reasonable interpretation of the notation in which these generalizations were here expressed and then prove them.
 
-\textbf{Interpretation and proof.} What's remains in the left intersection are the subsets that appear in each $X$'s power set. Since these subsets are in every $X$, they are subsets in $\bigcap X$, the intersection on the right. The left union collects every subset of every $X$ in $\mathcal{C}$. Any such subset of an $X$ is certainly still a subset of $X$ unioned with anything else, since unioning can only add members. Therefore all the subsets making up the left union must also be in the right union.
+\textbf{Interpretation and proof.} What remains in the left intersection are the subsets that appear in each $X$'s power set. Since these subsets are in every $X$, they are subsets in $\bigcap X$, the intersection on the right. The left union collects every subset of every $X$ in $\mathcal{C}$. Any such subset of an $X$ is certainly still a subset of $X \cup Y$ for any  $Y$; unioning can only add members. Therefore all the subsets making up the left union must also be in the right union.
 
-\subsection{} Show that $E$ is always equal to $\bigcap_{X \in \mathscr{P}(E)}X$ (that is, $E = \bigcup \mathscr{P}(E)$), but that the result of applying $\mathscr{P}$ and $\bigcup$ to $E$ in the other order is a set that includes $E$ as a subset, typically a proper subset.
+\subsection{} Show that $E$ is always equal to $\bigcup_{X \in \mathscr{P}(E)}X$ (that is, $E = \bigcup \mathscr{P}(E)$), but that the result of applying $\mathscr{P}$ and $\bigcup$ to $E$ in the other order is a set that includes $E$ as a subset, typically a proper subset.
 
 \textbf{Proof.} Every element in $E$ appears in some subset of $E$, and any element \textit{not} in $E$ will not appear in any such subset. Therefore if we union all the subsets of $E$ together, which is exactly what the notation indicates, we reassemble the set $E$.
 
-To prove $E \subset \mathscr{P}\left(\bigcup E\right)$ consider that $E$ is itself a collection of sets and recall that $\mathscr{P}\left(\bigcup E\right)$ is just alternative notation for $\mathscr{P}\left(\bigcup_{X \in E} X\right)$. Now any set $X$ will be an element of $\mathscr{P}(X)$, so unioning $\mathscr{P}(X)$ for all $X \in E$ places each $X \in E$ in union. Therefore $E$, which is just the collection of the $X$'s, must be a subset of $\mathscr{P}(\bigcup_{X \in E} X)$. 
+To prove $E \subset \mathscr{P}\left(\bigcup E\right)$ recall that $E$ is a collection of sets and $\bigcup E$ is the union of all the elements of $E$'s member sets: if $A \in E$, then for all $a \in A$, $a$ is a member of $\bigcup E$. Since every element of $A$ is in $\bigcup E$, $A \subset \bigcup E$ and equivalently, $A \in \mathscr{P}(\bigcup E)$. So we have every element of $E$ is an element of $\mathscr{P}(\bigcup E)$, which means $E \subset \mathscr{P}(\bigcup E)$. 
 
-Let's explore Halmos' comment that $E$ is typically a proper subset of of $\mathscr{P}\left(\bigcup E\right)$. Consider what it would take for $E$ to \textit{not} be a proper subset. Since $E$ must be contained in $\mathscr{P}\left(\bigcup E\right)$, to be improper means $E$ must be all of $\mathscr{P}\left(\bigcup E\right)$. If $E = \mathscr{P}\left(\bigcup E\right)$ then this says that $E$ is the power set of the set made from all $E$'s members' elements. In other words, $E$ must itself have the structure of a power set for this equality to hold. So $E$ is a proper subset of this union unless $E = \mathscr{P}(A)$ for some set $A$.
+Let's explore Halmos' comment that $E$ is typically a proper subset of $\mathscr{P}(\bigcup E)$. Consider what it would take for $E$ to \textit{not} be a proper subset. Since $E$ must be contained in $\mathscr{P}\left(\bigcup E\right)$, to be improper means $E$ must be all of $\mathscr{P}\left(\bigcup E\right)$. If $E = \mathscr{P}\left(\bigcup E\right)$ then this says that $E$ is the power set of the set made from all $E$'s members' elements. In other words, $E$ must itself have the structure of a power set for this equality to hold. So $E$ is a proper subset of this union unless $E = \mathscr{P}(A)$ for some set $A$.
 
 \section{Unordered Pairs}
 
@@ -144,9 +144,9 @@ For the second equality, the left hand side specifies elements that are in every
 
 \subsection{} Prove that $\Big(\bigcup_i A_i \Big) \times \Big( \bigcup_j B_j \Big) = \bigcup_{i,j}\left(A_i \times B_j\right)$, and that the same equation holds for intersections (provided that the domains of the families involved are not emtpy).
 
-\textbf{Proof.} An $(a, b)$ is in the product on the left if and only if there is an $i$ and $j$ where $a \in A_i$ and $b \in B_j$ which means $(a, b) \in A_i \times B_j$. This $(i, j)$ pair is one of the indices in $\bigcup_{i,j}$ so $A_i \times B_j$ will be in the union on the right.
+\textbf{Proof.} An $(a, b)$ is in the product on the left if and only if there is an $i$ and $j$ where $a \in A_i$ and $b \in B_j$ which means $(a, b) \in A_i \times B_j$. Since $(a, b) \in A_i \times B_j$, it is in the union on the RHS as well.
 
-\subsection{} Prove (with appropriate provisos about empty families) that $\bigcap_i X_i \subset X_j \subset \bigcap_i X_i$ for each index $j$ and that intersection and union can in fact be characterized as the extreme solutions of these inclusions.
+\subsection{} Prove (with appropriate provisos about empty families) that $\bigcap_i X_i \subset X_j \subset \bigcup_i X_i$ for each index $j$ and that intersection and union can in fact be characterized as the extreme solutions of these inclusions.
 
 \textbf{Proof.} Intersecting a set can only remove elements from the result and unioning sets can only add elements to the result. So anything in $\bigcap_i X_i $ must be in $X_j$ and anything in $X_j$ must be in $\bigcap_i X_i$.
 
@@ -181,20 +181,10 @@ For the second equality, the left hand side specifies elements that are in every
 
     \item A necessary and sufficient condition that $Y - f(A) \subset f(X - A)$ for all subsets $A$ of $X$ is that $f$ map $X$ onto $Y$.
     
-    \textbf{Proof.} Since this must hold for $A$ being any subset of $X$, consider what happens when $A = \varnothing$. Then $Y - f(A) \subset f(X - A)$ means $Y \subset f(X)$. For $f(X)$ to contain $Y$ it must be all of $Y$ itself, meaning $f$ is surjective.
+    \textbf{Forward implication:} Since this must hold for $A$ being any subset of $X$, consider what happens when $A = \varnothing$. Then $Y - f(A) \subset f(X - A)$ means $Y \subset f(X)$. For $f(X)$ to contain $Y$ it must be all of $Y$ itself, meaning $f$ is surjective.
 
-    \item Consider the matrix $T =
-    \begin{bmatrix}
-        a_{11} & a_{12} & a_{13} \\
-        a_{21} & a_{22} & a_{23} \\
-        a_{31} & a_{32} & a_{33}
-    \end{bmatrix}$ and the vector $\mathbf{v} = \begin{bmatrix}x \\ y \\ z\end{bmatrix}$. Show that
-    $$T\mathbf{v} = T(x\mathbf{e}_1 + y\mathbf{e}_2 + z\mathbf{e}_3) $$
+    \textbf{Reverse implication:} Call $f(A)$ the set $B$. Then $Y - B$ are all the members of $Y$ except those mapped to by members of $A$. If it is the case that only $A$ elements map to $B$, then $Y - B = f(X - A)$. Otherwise, if there is an $x \in X - A$ that maps to $B$, then $Y - B \subset f(X - A)$. In either case we have $Y - f(A) \subset f(X - A)$.
 
-    Use matrix multiplication to evaluate the product on the left and the distributive property on the right
-    
-    Injective: $\forall y \in \text{img }f,  \exists! x \in X: f(x) = y$
-
-    Surjective: $\forall y \in Y, \exists x \in X: f(x) = y $
+   
 \end{enumerate}
 \end{document}
